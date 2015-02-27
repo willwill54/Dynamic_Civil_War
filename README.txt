@@ -1,0 +1,1 @@
+This is a mod to simulate dynamic civil wars by the use of dynamic tags
