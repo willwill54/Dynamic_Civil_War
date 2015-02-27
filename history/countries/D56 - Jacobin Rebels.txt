@@ -1,0 +1,39 @@
+#capital = 
+primary_culture = british
+religion = protestant
+government = democracy
+plurality = 25.1
+nationalvalue = nv_order
+literacy = 0.17
+civilized = yes
+
+# Political reforms 
+slavery = no_slavery
+upper_house_composition = population_equal_weight
+vote_franschise = universal_voting
+public_meetings = yes_meeting
+press_rights = free_press
+trade_unions = non_socialist
+voting_system = proportional_representation
+political_parties = secret_ballots
+
+# Social Reforms
+wage_reform = no_minimum_wage
+work_hours = no_work_hour_limit
+safety_regulations = no_safety
+health_care = no_health_care
+unemployment_subsidies = no_subsidies
+pensions = no_pensions
+
+school_reforms = no_schools
+
+ruling_party = dominion_liberal
+upper_house = { 
+	fascist = 0
+	liberal = 100
+	conservative = 0
+	reactionary = 0
+	anarcho_liberal = 0
+	socialist = 0
+	communist = 0
+}
