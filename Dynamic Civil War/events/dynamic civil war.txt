@@ -1,0 +1,1595 @@
+province_event = {
+	id = 9000 #Liberal Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing liberal revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = liberal_revolutionaries_center
+			has_province_modifier = liberal_revolutionaries_spread_1 
+			has_province_modifier = liberal_revolutionaries_spread_2
+			vote_franschise = universal_voting
+			}
+		owner = {
+			NOT = { government = democracy }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = liberal_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_liberal_center 
+			duration = -1 
+			}
+		add_crime = liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = liberal_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_liberal_center 
+				duration = -1 
+				}
+			add_crime = liberal_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9001 
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_liberal_center 
+		NOT = {
+			has_province_modifier = liberal_revolutionaries_center
+			has_province_modifier = liberal_revolutionaries_spread_1 
+			has_province_modifier = liberal_revolutionaries_spread_2
+			vote_franschise = universal_voting
+			}
+		owner = {
+			NOT = { government = democracy }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = liberal_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = liberal_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = liberal_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = liberal_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+				add_province_modifier = {
+					name = liberal_revolutionaries_spread_1 
+					duration = -1 
+				}
+			}
+		}
+	}
+}
+
+province_event = {
+	id = 9002 #Communist Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing communist revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = communist_revolutionaries_center
+			has_province_modifier = communist_revolutionaries_spread_1
+			has_province_modifier = communnist_revolutionaries_spread_2
+			}
+		owner = {
+			NOT = { government = proletarian_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = communist_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_communist_center 
+			duration = -1 
+			}
+		add_crime = communist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = communist_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_communist_center 
+				duration = -1 
+				}
+			add_crime = communist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9003
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_communist_center 
+		NOT = {
+			has_province_modifier = communist_revolutionaries_center
+			has_province_modifier = communist_revolutionaries_spread_1
+			has_province_modifier = communnist_revolutionaries_spread_2
+			}
+		owner = {
+			NOT = { government = proletarian_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = communist_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = communist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = communist_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = communist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = communist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}	
+
+province_event = {
+	id = 9004 #Fascist Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing fascist revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = fascist_revolutionaries_center
+			has_province_modifier = fascist_revolutionaries_spread_1
+			has_province_modifier = fascist_revolutionaries_spread_2
+			}
+		owner = {
+			NOT = { government = fascist_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = fascist_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_fascist_center 
+			duration = -1 
+			}
+		add_crime = communist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = fascist_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_fascist_center 
+				duration = -1 
+				}
+			add_crime = fascist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9005
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_fascist_center 
+		NOT = {
+			has_province_modifier = fascist_revolutionaries_center
+			has_province_modifier = fascist_revolutionaries_spread_1
+			has_province_modifier = fascist_revolutionaries_spread_2
+			vote_franschise = universal_voting
+			}
+		owner = {
+			NOT = { government = fascist_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = fascist_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = fascist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = fascist_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = fascist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = fascist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}	
+
+province_event = {
+	id = 9006 #Reactionary Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing reactionary revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = reactionary_revolutionaries_center
+			has_province_modifier = reactionary_revolutionaries_spread_1
+			has_province_modifier = reactionary_revolutionaries_spread_2
+			vote_franschise = none_voting
+			}
+		owner = {
+			NOT = { government = absolute_monarchy }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = reactionary_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_reactionary_center 
+			duration = -1 
+			}
+		add_crime = reactionary_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = reactionary_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_reactionary_center 
+				duration = -1 
+				}
+			add_crime = fascist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9007
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_reactionary_center 
+		NOT = {
+			has_province_modifier = reactionary_revolutionaries_center
+			has_province_modifier = reactionary_revolutionaries_spread_1
+			has_province_modifier = reactionary_revolutionaries_spread_2
+			vote_franschise = none_voting
+			}
+		owner = {
+			NOT = { government = absolute_monarchy }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = reactionary_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = reactionary_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = reactionary_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = reactionary_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = reactionary_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+
+
+
+province_event = {
+	id = 9008 #Socialist Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing socialist revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = socialist_revolutionaries_center
+			has_province_modifier = socialist_revolutionaries_spread_1
+			has_province_modifier = socialist_revolutionaries_spread_2
+			}
+		owner = {
+			NOT = { ruling_party_ideology = socialist }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = socialist_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_socialist_center 
+			duration = -1 
+			}
+		add_crime = socialist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = socialist_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_socialist_center 
+				duration = -1 
+				}
+			add_crime = socialist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9009
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_socialist_center 
+		NOT = {
+			has_province_modifier = socialist_revolutionaries_center
+			has_province_modifier = socialist_revolutionaries_spread_1
+			has_province_modifier = socialist_revolutionaries_spread_2
+			}
+		owner = {
+			NOT = { ruling_party_ideology = socialist }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = socialist_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = socialist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = socialist_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = socialist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = socialist_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}	
+
+
+province_event = {
+	id = 9010 #AnarchoLiberal Revolutionary Center
+	title = "Revolutionaries"
+	desc = "Recently disgruntled citizens in your land have begun organizing anarcho-liberal revolutionary organizations aimed at toppling the government. How shall we react?"
+	
+	trigger = {
+		NOT = {
+			has_province_modifier = anarcho_liberal_revolutionaries_center
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_2
+			vote_franschise = universal_voting
+			}
+		owner = {
+			NOT = { government = bourgeois_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4 
+		civilized = yes 
+		is_colonial = no
+	}
+	
+	mean_time_to_happen = {
+		months = 16  
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = anarcho_liberal_revolutionaries_center
+			duration = -1
+			}
+		add_country_modifier = {
+			name = has_anarcho_liberal_center 
+			duration = -1 
+			}
+		add_crime = anarcho_liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_center
+				duration = -1
+				}
+			add_country_modifier = {
+				name = has_anarcho_liberal_center 
+				duration = -1 
+				}
+			add_crime = anarcho_liberal_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}
+	
+province_event = {
+	id = 9011
+	name = "Revolutionaries Spread" 
+	desc = "After a revolutionary organization started in one of your provinces and has now set up another chapter else where in your nation"
+	
+	trigger = {
+		has_country_modifer = has_anarcho_liberal_center 
+		NOT = {
+			has_province_modifier = anarcho_liberal_revolutionaries_center
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_2			
+			vote_franschise = universal_voting
+			}
+		owner = {
+			NOT = { government = bourgeois_dictatorship }
+			}
+		average_consciousness = 2
+		average_militancy = 4
+		civilized = yes 
+		is_colonial = no
+		}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = anarcho_liberal_revolutionaries_spread_2
+			duration = -1
+			}
+		add_province_modifier = {
+			name = anarcho_liberal_revolutionaries_spread_3 
+			duration = -1 
+			}
+		add_crime = anarcho_liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	
+	option = {
+		name = "Destroy the organization"
+		random = {
+			chance = 50 
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_2 
+				duration = -1
+				}
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_3 
+				duration = -1 
+				}
+			add_crime = anarcho_liberal_revolutionaries
+			militancy = 2
+			any_neighbor_province = {
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+}

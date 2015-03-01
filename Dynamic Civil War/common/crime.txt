@@ -1,0 +1,261 @@
+anarchic_bomb_throwers = {
+	pop_consciousness_modifier = 0.05
+	icon = 1	
+	
+	trigger = {
+		any_pop = {
+			average_militancy = 4
+			}
+		}
+	}	
+
+citizen_guard = {
+	life_rating = -0.02
+	local_rgo_output = -0.1
+	icon = 2	
+	
+	trigger = {
+		poor_strata_life_needs = 0.2
+		}		
+}
+
+immoral_business = {
+
+	active = yes
+	
+	local_rgo_output = -0.2
+	icon = 3	
+	
+	trigger = {
+	}		
+}
+
+machine_politics = {
+	active = yes
+
+	boost_strongest_party = 5.0
+	icon = 4
+	
+	trigger = {
+	}		
+}
+
+mafia = {
+	active = yes
+
+	local_factory_output = -0.05
+	icon = 5	
+	
+	trigger = {
+	}		
+}
+
+rotten_boroughs = {
+
+	active = yes
+
+	number_of_voters = 1.0	#double voters.
+	icon = 6	
+	
+	trigger = {
+	}		
+}
+
+spoil_system = {
+
+	active = yes
+	local_ruling_party_support = 2.0
+	icon = 7	
+	
+	trigger = {
+	}	
+}
+
+terrorist_cells = {
+	
+
+	local_factory_throughput = -0.15
+	icon = 8	
+
+	trigger = {
+		any_pop = {
+			militancy = 5 
+			}
+	}	
+}
+
+liberal_revolutionaries = {
+
+	active = yes
+	
+	ideology = {
+		factor = 0.05 
+		value = liberal 
+		}
+	pop_militancy_modifier = 0.1 
+	
+	icon = 2
+
+	trigger = {
+		OR = {
+			has_country_flag = liberal_revolution_in_progress
+			has_global_flag = liberal_revolution_somewhere
+			has_country_modifier = springtime_of_nations
+			any_neighbor_country = {
+				OR = {
+					government = democracy
+					ruling_party_ideology = liberal
+					}
+			}
+			pop_majority_ideology = liberal
+			}
+		}
+}
+
+communist_revolutionaries = {
+	
+	ideology = {
+		factor = 0.05 
+		value = communist 
+		}
+	pop_militancy_modifier = 0.1 
+	
+		
+	icon = 2
+	
+	trigger = {
+		OR ={
+			any_neighbor_country = {
+				OR = {
+					government = proletarian_dictatorship
+					ruling_party_ideology = communist 
+					}
+				}
+			pop_majority_ideology = communist
+			}
+		NOT = {
+			government = proletarian_dictatorship
+			ruling_party_ideology = communist
+			}
+		}
+}
+
+anarcho_liberal_revolutionaries = {
+	
+	ideology = {
+		factor = 0.05 
+		value = anarcho_liberal 
+		}
+	pop_militancy_modifier = 0.1 
+			
+	icon = 2
+	
+	trigger = {
+		OR = {
+			any_neighbor_country = {
+				OR = {
+					government = bourgeois_dictatorship
+					ruling_party_ideology = anarcho_liberal
+					}
+				}
+			pop_majority_ideology = anarcho_liberal
+			}
+		NOT = {
+			government = bourgeois_dictatorship
+			ruling_party_ideology = anarcho_liberal 
+		}
+	}
+}
+
+socialist_revolutionaries = {
+	
+	ideology = {
+		factor = 0.05
+		value = socialist
+		}
+	pop_militancy_modifier = 0.1 
+	
+	icon = 2
+	
+	trigger = {
+		OR = {
+			any_neighbor_country = {
+				ruling_party_ideology = socialist
+				}
+			pop_majority_ideology = socialist
+			}
+		NOT = {
+			ruling_party_ideology = socialist
+		}
+	}
+}
+
+reactionary_revolutionaries = {
+	
+	active = yes 
+	
+	ideology = {
+		factor = 0.05 
+		value = reactionary
+		}
+	pop_militancy_modifier = 0.1 
+	
+	icon = 2
+	
+	trigger = {
+		AND = {
+			any_neighbor_country = {
+				OR = {
+					ruling_party_ideology = reactionary
+					government = absolute_monarchy
+					}
+				}
+			pop_majority_ideology = reactionary 
+		}
+		NOT = {
+			government = absolute_monarchy
+			ruling_party_ideology = reactionary
+		}
+	}
+}
+
+fascist_revolutionaries = {
+	
+	ideology = {
+		factor = 0.05 
+		value = fascist 
+		}
+	pop_militancy_modifier = 0.1 
+	
+	icon = 2 
+	
+	trigger = {
+		OR = {
+			any_neighbour_country = {
+				OR = {
+					government = fascist_dictatorship 
+					ruling_party_ideology = fascist
+					}
+				}
+			pop_majority_ideology = fascist 
+			}
+		NOT = {
+			government = fascist_dictatorship
+			ruling_party_ideology = fascist
+		}
+	}
+}
+
+race_riots = {
+	
+	active = yes
+	
+	local_rgo_output = -0.1 
+	
+	icon = 8
+	
+	trigger = {
+		slavery = yes_slavery
+		is_colonial = yes
+	}
+}

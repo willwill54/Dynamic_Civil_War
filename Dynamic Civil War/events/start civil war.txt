@@ -1,0 +1,140 @@
+country_event = {
+	id = 9100 
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more liberal reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_liberal_center
+		any_owned_province = {
+			has_province_modifier = liberal_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+		}
+	}
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_spread_1
+					has_province_modifier = liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		}
+	}
+	
+
