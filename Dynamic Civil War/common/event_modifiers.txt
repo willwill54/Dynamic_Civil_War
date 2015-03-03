@@ -777,6 +777,9 @@ liberal_revolutionaries_spread_3 = {
 has_liberal_center = {
 }
 
+liberal_demands_cooldown = {
+}
+
 communist_revolutionaries_center ={
 }
 
@@ -790,6 +793,9 @@ communist_revolutionaries_spread_3 = {
 }
 
 has_communist_center = {
+}
+
+communist_demands_cooldown = {
 }
 
 fascist_revolutionaries_center = {
@@ -807,6 +813,9 @@ fascist_revolutionaries_spread_3 = {
 has_fascist_center = {
 }
 
+fascist_demands_cooldown = {
+}
+
 reactionary_revolutionaries_center = {
 }
 
@@ -820,6 +829,9 @@ reactionary_revolutionaries_spread_3 = {
 }
 
 has_reactionary_center = {
+}
+
+reactionary_demands_cooldown = {
 }
 
 socialist_revolutionaries_center = {
@@ -837,6 +849,9 @@ socialist_revolutionaries_spread_3 = {
 has_socialist_center = {
 }
 
+socialist_demands_cooldown = {
+}
+
 anarcho_liberal_revolutionaries_center = {
 }
 
@@ -850,6 +865,9 @@ anarcho_liberal_revolutionaries_spread_3 = {
 }
 
 has_anarcho_liberal_center = {
+}
+
+anarcho_liberal_demands_cooldown = {
 }
 
 
