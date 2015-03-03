@@ -114,6 +114,8 @@ liberal_revolutionaries = {
 
 communist_revolutionaries = {
 	
+	active = yes 
+	
 	ideology = {
 		factor = 0.05 
 		value = communist 
@@ -137,10 +139,13 @@ communist_revolutionaries = {
 			government = proletarian_dictatorship
 			ruling_party_ideology = communist
 			}
+		is_ideology_enabled = communist
 		}
 }
 
 anarcho_liberal_revolutionaries = {
+	
+	active = yes 
 	
 	ideology = {
 		factor = 0.05 
@@ -164,10 +169,13 @@ anarcho_liberal_revolutionaries = {
 			government = bourgeois_dictatorship
 			ruling_party_ideology = anarcho_liberal 
 		}
+		is_ideology_enabled = anarcho_liberal
 	}
 }
 
 socialist_revolutionaries = {
+	
+	active = yes 
 	
 	ideology = {
 		factor = 0.05
@@ -187,6 +195,7 @@ socialist_revolutionaries = {
 		NOT = {
 			ruling_party_ideology = socialist
 		}
+		is_ideology_enabled = socialist
 	}
 }
 
@@ -221,6 +230,8 @@ reactionary_revolutionaries = {
 
 fascist_revolutionaries = {
 	
+	active = yes 
+	
 	ideology = {
 		factor = 0.05 
 		value = fascist 
@@ -243,6 +254,7 @@ fascist_revolutionaries = {
 			government = fascist_dictatorship
 			ruling_party_ideology = fascist
 		}
+		is_ideology_enabled = fascist
 	}
 }
 
@@ -256,6 +268,6 @@ race_riots = {
 	
 	trigger = {
 		slavery = yes_slavery
-		is_colonial = yes
+		NOT = { continent = europe }
 	}
 }
