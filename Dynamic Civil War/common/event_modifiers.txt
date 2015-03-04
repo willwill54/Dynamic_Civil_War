@@ -780,6 +780,9 @@ has_liberal_center = {
 liberal_demands_cooldown = {
 }
 
+possible_revolution_liberal = {
+}
+
 communist_revolutionaries_center ={
 }
 
@@ -796,6 +799,9 @@ has_communist_center = {
 }
 
 communist_demands_cooldown = {
+}
+
+possible_revolution_communist = {
 }
 
 fascist_revolutionaries_center = {
@@ -816,6 +822,9 @@ has_fascist_center = {
 fascist_demands_cooldown = {
 }
 
+possible_revolution_fascist = {
+}
+
 reactionary_revolutionaries_center = {
 }
 
@@ -832,6 +841,9 @@ has_reactionary_center = {
 }
 
 reactionary_demands_cooldown = {
+}
+
+possible_revolution_reactionary = {
 }
 
 socialist_revolutionaries_center = {
@@ -852,6 +864,9 @@ has_socialist_center = {
 socialist_demands_cooldown = {
 }
 
+possible_revolution_socialist = {
+}
+
 anarcho_liberal_revolutionaries_center = {
 }
 
@@ -868,6 +883,9 @@ has_anarcho_liberal_center = {
 }
 
 anarcho_liberal_demands_cooldown = {
+}
+
+possible_revolution_anarcho_liberal = {
 }
 
 

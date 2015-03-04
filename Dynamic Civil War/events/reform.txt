@@ -1,0 +1,5418 @@
+####Liberal####
+country_event = {
+	id = 9100 
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more liberal reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_liberal_center
+		any_owned_province = {
+			has_province_modifier = liberal_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = liberal_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+		}
+	}
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_spread_1
+					has_province_modifier = liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_spread_1
+					has_province_modifier = liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_spread_1
+					has_province_modifier = liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = liberal_demands_refused
+		}
+	}
+	
+province_event = {
+	id = 9200 
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = liberal_revolutionaries_spread_2 
+		NOT = { has_province_modifier = liberal_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = liberal_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9300 
+	title = "Giving into Demands"
+	desc = "After demands by liberal agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = liberal_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = universal_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = population_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}			
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = proportional_represenetation }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			owner = { political_reform = yes_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = free_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = liberal 
+				}
+			}
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = all_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			owner = { political_reform = harassment }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = secret_ballots }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform	
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	}
+
+country_event = {
+	id = 9400 
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the liberal agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = liberal_demands_cooldown }
+		has_country_flag = liberal_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+				modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = liberal 
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_liberal 
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = liberal_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_liberal
+				duration = 90 
+				}
+			}
+		}
+	}
+
+
+country_event = {
+	id = 9500 
+	title = "Giving into Demands"
+	desc = "After demands by liberal agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = liberal_reform_2 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = universal_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}
+		clr_country_flag = liberal_reform_2 
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = population_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}			
+		clr_country_flag = liberal_reform_2
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = proportional_represenetation }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform_2
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			owner = { political_reform = yes_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}
+		clr_country_flag = liberal_reform_2
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = free_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = liberal 
+				}
+			}
+		clr_country_flag = liberal_reform_2
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = all_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform_2
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			owner = { political_reform = harassment }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = secret_ballots }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = liberal_reform_2	
+		add_country_modifer = {
+			name = liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+	}
+	
+	
+####Communist####	
+country_event = {
+	id = 9101
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more communist reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_communist_center
+		any_owned_province = {
+			has_province_modifier = communist_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = communist_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -8
+			}
+		}		
+	}
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -8
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_spread_1
+					has_province_modifier = communist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  communist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = communist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_spread_1
+					has_province_modifier = communist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  communist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = communist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}			
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_spread_1
+					has_province_modifier = communist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  communist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = communist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = communist_demands_refused			
+		}
+	}
+	
+province_event = {
+	id = 9201
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = communist_revolutionaries_spread_2 
+		NOT = { has_province_modifier = communist_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = communist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = communist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = communist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9301
+	title = "Giving into Demands"
+	desc = "After demands by communist agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = communist_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Minimum Wage"
+		random_owned = {
+			limit = {
+				owner = { wage_reform = no_minimum_wage }
+				}
+			owner = { political_reform = trinket_wage }
+			}
+		random_owned = {
+			limit = {
+				owner = { wage_reform = trinket_wage }
+				}
+			owner = { political_reform = low_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = low_minimum_wage }
+				}
+			owner = { political_reform = acceptable_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = acceptable_minimum_wage }
+				}
+			owner = { political_reform = good_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = good_minimum_wage }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}	
+		}			
+		clr_country_flag = communist_reform
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Work Hours"
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			owner = { political_reform = fourteen_hours }
+			}
+		random_owned = {
+			limit = {
+				owner = { work_hours = fourteen_hours }
+				}
+			owner = { political_reform = twelve_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = twelve_hours }
+				}
+			owner = { political_reform = ten_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = ten_hours }
+				}
+			owner = { political_reform = eight_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}		
+		clr_country_flag = communist_reform
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+		
+	option = {
+		name = "Safety Regulations" 
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = no_safety }
+				}
+			owner = { political_reform = trinket_safety }
+			}
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = trinket_safety }
+				}
+			owner = { political_reform = low_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = low_safety }
+				}
+			owner = { political_reform = acceptable_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = acceptable_safety }
+				}
+			owner = { political_reform = good_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = good_safety }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform		
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}
+	}			
+	
+	option = {
+		name = "Unemployment Subsidies"
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = no_subsidies }
+				}
+			owner = { political_reform = trinket_subsidies }
+			}		
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = trinket_subsidies }
+				}
+			owner = { political_reform = low_subsidies }
+			}
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = low_subsidies }
+				}
+			owner = { political_reform = acceptable_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = acceptable_subsidies }
+				}
+			owner = { political_reform = good_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = good_subsidies }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+	
+	option = {
+		name = "Pensions"
+		random_owned = {
+			limit = {
+				owner = { pensions = no_pensions }
+				}
+			owner = { political_reform = trinket_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = trinket_pensions }
+				}
+			owner = { political_reform = low_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = low_pensions }
+				}
+			owner = { political_reform = acceptable_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = acceptable_pensions }
+				}
+			owner = { political_reform = good_pensions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { pensions = good_pensions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform	
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}		
+	}
+	
+	option = {
+		name = "Health Care"
+		random_owned = {
+			limit = {
+				owner = { health_care = no_health_care }
+				}
+			owner = { political_reform = trinket_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = trinket_health_care }
+				}
+			owner = { political_reform = low_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = low_health_care }
+				}
+			owner = { political_reform = acceptable_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = acceptable_health_care }
+				}
+			owner = { political_reform = good_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = good_health_care }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = communist_reform		
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+		
+	option = {
+		name = "School Reforms"
+		random_owned = {
+			limit = {
+				owner = { school_reforms = no_schools }
+				}
+			owner = { political_reform = low_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = low_schools }
+				}
+			owner = { political_reform = acceptable_schools }
+			}		
+		random_owned = {
+			limit = {
+				owner = { school_reforms = acceptable_schools }
+				}
+			owner = { political_reform = good_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = good_schools }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}			
+		}
+		clr_country_flag = communist_reform	
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 1095 
+			}		
+	}
+}
+
+country_event = {
+	id = 9401
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the communist agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = communist_demands_cooldown }
+		has_country_flag = communist_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = communist
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_communist
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = communist_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_communist
+				duration = 90 
+				}
+			}
+		}
+	}
+
+	
+country_event = {
+	id = 9501
+	title = "Giving into Demands"
+	desc = "After demands by communist agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = communist_reform_2
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Minimum Wage"
+		random_owned = {
+			limit = {
+				owner = { wage_reform = no_minimum_wage }
+				}
+			owner = { political_reform = trinket_wage }
+			}
+		random_owned = {
+			limit = {
+				owner = { wage_reform = trinket_wage }
+				}
+			owner = { political_reform = low_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = low_minimum_wage }
+				}
+			owner = { political_reform = acceptable_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = acceptable_minimum_wage }
+				}
+			owner = { political_reform = good_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = good_minimum_wage }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}	
+		}			
+		clr_country_flag = communist_reform_2
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Work Hours"
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			owner = { political_reform = fourteen_hours }
+			}
+		random_owned = {
+			limit = {
+				owner = { work_hours = fourteen_hours }
+				}
+			owner = { political_reform = twelve_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = twelve_hours }
+				}
+			owner = { political_reform = ten_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = ten_hours }
+				}
+			owner = { political_reform = eight_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}		
+		clr_country_flag = communist_reform_2
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365 
+			}
+	}
+		
+	option = {
+		name = "Safety Regulations" 
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = no_safety }
+				}
+			owner = { political_reform = trinket_safety }
+			}
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = trinket_safety }
+				}
+			owner = { political_reform = low_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = low_safety }
+				}
+			owner = { political_reform = acceptable_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = acceptable_safety }
+				}
+			owner = { political_reform = good_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = good_safety }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform_2	
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365
+			}
+	}			
+	
+	option = {
+		name = "Unemployment Subsidies"
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = no_subsidies }
+				}
+			owner = { political_reform = trinket_subsidies }
+			}		
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = trinket_subsidies }
+				}
+			owner = { political_reform = low_subsidies }
+			}
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = low_subsidies }
+				}
+			owner = { political_reform = acceptable_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = acceptable_subsidies }
+				}
+			owner = { political_reform = good_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = good_subsidies }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform_2
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365
+			}
+	}
+	
+	option = {
+		name = "Pensions"
+		random_owned = {
+			limit = {
+				owner = { pensions = no_pensions }
+				}
+			owner = { political_reform = trinket_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = trinket_pensions }
+				}
+			owner = { political_reform = low_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = low_pensions }
+				}
+			owner = { political_reform = acceptable_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = acceptable_pensions }
+				}
+			owner = { political_reform = good_pensions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { pensions = good_pensions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = communist_reform_2	
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365
+			}		
+	}
+	
+	option = {
+		name = "Health Care"
+		random_owned = {
+			limit = {
+				owner = { health_care = no_health_care }
+				}
+			owner = { political_reform = trinket_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = trinket_health_care }
+				}
+			owner = { political_reform = low_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = low_health_care }
+				}
+			owner = { political_reform = acceptable_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = acceptable_health_care }
+				}
+			owner = { political_reform = good_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = good_health_care }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = communist_reform_2	
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365
+			}
+	}
+		
+	option = {
+		name = "School Reforms"
+		random_owned = {
+			limit = {
+				owner = { school_reforms = no_schools }
+				}
+			owner = { political_reform = low_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = low_schools }
+				}
+			owner = { political_reform = acceptable_schools }
+			}		
+		random_owned = {
+			limit = {
+				owner = { school_reforms = acceptable_schools }
+				}
+			owner = { political_reform = good_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = good_schools }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = communist
+					factor = 8
+				}
+			}			
+		}
+		clr_country_flag = communist_reform_2
+		add_country_modifer = {
+			name = communist_demands_cooldown 
+			duration = 365
+			}		
+	}
+}
+
+
+####Fascist####
+country_event = {
+	id = 9102
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more fascist reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_fascist_center
+		any_owned_province = {
+			has_province_modifier = fascist_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = fascist_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}
+	}		
+
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 8
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_spread_1
+					has_province_modifier = fascist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  fascist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = fascist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_spread_1
+					has_province_modifier = fascist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  fascist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = fascist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_spread_1
+					has_province_modifier = fascist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  fascist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = fascist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = fascist_demands_refused
+		}
+	}
+	
+province_event = {
+	id = 9202
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = fascist_revolutionaries_spread_2 
+		NOT = { has_province_modifier = fascist_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = fascist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = fascist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = fascist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9302
+	title = "Giving into Demands"
+	desc = "After demands by fascist agitators you promised to recall political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = fascist_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = none_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = party_appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}			
+		clr_country_flag = fascist_reform
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = first_past_the_post }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform	
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			owner = { political_reform = no_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = state_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = fascist 
+				}
+			}
+		clr_country_flag = fascist_reform
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = no_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist 
+					}
+				}
+			}
+		clr_country_flag = fascist_reform		
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = harassment }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = underground_parties }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist 
+					}
+				}
+			}	
+		clr_country_flag = fascist_reform		
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+}
+
+country_event = {
+	id = 9402
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the fascist agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = fascist_demands_cooldown }
+		has_country_flag = fascist_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_fascist
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = fascist_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_fascist
+				duration = 90 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9502
+	title = "Giving into Demands"
+	desc = "After demands by fascist agitators you promised to recall political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = fascist_reform_2 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = none_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform_2
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = party_appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}			
+		clr_country_flag = fascist_reform_2
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = first_past_the_post }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform_2
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			owner = { political_reform = no_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = fascist_reform_2
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = state_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = fascist 
+				}
+			}
+		clr_country_flag = fascist_reform_2
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365 
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = no_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist 
+					}
+				}
+			}
+		clr_country_flag = fascist_reform_2		
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365 
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = harassment }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = underground_parties }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist 
+					}
+				}
+			}	
+		clr_country_flag = fascist_reform_2		
+		add_country_modifer = {
+			name = fascist_demands_cooldown 
+			duration = 365 
+			}		
+		}
+}
+
+
+####Reactionary####
+country_event = {
+	id = 9103
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more reactionary reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_reactionary_center
+		any_owned_province = {
+			has_province_modifier = reactionary_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = reactionary_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+		}
+	}		
+
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 8
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_spread_1
+					has_province_modifier = reactionary_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  reactionary_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = reactionary_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_spread_1
+					has_province_modifier = reactionary_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  reactionary_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = reactionary_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_spread_1
+					has_province_modifier = reactionary_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  reactionary_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = reactionary_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = reactionary_demands_refused
+		}
+	}
+	
+province_event = {
+	id = 9203
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = reactionary_revolutionaries_spread_2 
+		NOT = { has_province_modifier = reactionary_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = reactionary_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = reactionary_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = reactionary_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9303
+	title = "Giving into Demands"
+	desc = "After demands by reactionary agitators you promised to recall political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = reactionary_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = none_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = party_appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}			
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = first_past_the_post }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform	
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			owner = { political_reform = no_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = state_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = reactionary
+				}
+			}
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = no_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary 
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = harassment }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = underground_parties }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}	
+		clr_country_flag = reactionary_reform
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+}
+
+
+country_event = {
+	id = 9403
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the reactionary agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = reactionary_demands_cooldown }
+		has_country_flag = reactionary_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.3 
+			has_province_modifier = fascist_revolutionaries_spread_1
+			}
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_reactionary
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = reactionary_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_reactionary
+				duration = 90 
+				}
+			}
+		}
+	}
+	
+
+country_event = {
+	id = 9503
+	title = "Giving into Demands"
+	desc = "After demands by reactionary agitators you promised to recall political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = reactionary_reform_2 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = none_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = party_appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}			
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = first_past_the_post }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform_2	
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			owner = { political_reform = no_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = fascist
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = state_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = reactionary
+				}
+			}
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = no_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary 
+					}
+				}
+			}
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = harassment }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = underground_parties }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = reactionary
+					}
+				}
+			}	
+		clr_country_flag = reactionary_reform_2
+		add_country_modifer = {
+			name = reactionary_demands_cooldown 
+			duration = 365
+			}		
+		}
+}
+
+
+####Socialist####
+country_event = {
+	id = 9104
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more communist reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_socialist_center
+		any_owned_province = {
+			has_province_modifier = communist_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = socialist_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}		
+	}
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 8
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_spread_1
+					has_province_modifier = socialist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  socialist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = socialist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_spread_1
+					has_province_modifier = socialist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  socialist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = socialist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}			
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_spread_1
+					has_province_modifier = socialist_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  socialist_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = socialist_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = socialist_demands_refused			
+		}
+	}
+	
+province_event = {
+	id = 9204
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = socialist_revolutionaries_spread_2 
+		NOT = { has_province_modifier = socialist_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = socialist_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = socialist_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = socialist_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9304
+	title = "Giving into Demands"
+	desc = "After demands by socialist agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = socialist_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Minimum Wage"
+		random_owned = {
+			limit = {
+				owner = { wage_reform = no_minimum_wage }
+				}
+			owner = { political_reform = trinket_wage }
+			}
+		random_owned = {
+			limit = {
+				owner = { wage_reform = trinket_wage }
+				}
+			owner = { political_reform = low_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = low_minimum_wage }
+				}
+			owner = { political_reform = acceptable_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = acceptable_minimum_wage }
+				}
+			owner = { political_reform = good_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = good_minimum_wage }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}	
+		}			
+		clr_country_flag = socialist_reform
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Work Hours"
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			owner = { political_reform = fourteen_hours }
+			}
+		random_owned = {
+			limit = {
+				owner = { work_hours = fourteen_hours }
+				}
+			owner = { political_reform = twelve_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = twelve_hours }
+				}
+			owner = { political_reform = ten_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = ten_hours }
+				}
+			owner = { political_reform = eight_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}		
+		clr_country_flag = socialist_reform
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Safety Regulations" 
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = no_safety }
+				}
+			owner = { political_reform = trinket_safety }
+			}
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = trinket_safety }
+				}
+			owner = { political_reform = low_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = low_safety }
+				}
+			owner = { political_reform = acceptable_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = acceptable_safety }
+				}
+			owner = { political_reform = good_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = good_safety }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = socialist_reform	
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}		
+	}			
+	
+	option = {
+		name = "Unemployment Subsidies"
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = no_subsidies }
+				}
+			owner = { political_reform = trinket_subsidies }
+			}		
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = trinket_subsidies }
+				}
+			owner = { political_reform = low_subsidies }
+			}
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = low_subsidies }
+				}
+			owner = { political_reform = acceptable_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = acceptable_subsidies }
+				}
+			owner = { political_reform = good_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = good_subsidies }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform	
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+	
+	option = {
+		name = "Pensions"
+		random_owned = {
+			limit = {
+				owner = { pensions = no_pensions }
+				}
+			owner = { political_reform = trinket_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = trinket_pensions }
+				}
+			owner = { political_reform = low_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = low_pensions }
+				}
+			owner = { political_reform = acceptable_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = acceptable_pensions }
+				}
+			owner = { political_reform = good_pensions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { pensions = good_pensions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform	
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}		
+	}
+	
+	option = {
+		name = "Health Care"
+		random_owned = {
+			limit = {
+				owner = { health_care = no_health_care }
+				}
+			owner = { political_reform = trinket_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = trinket_health_care }
+				}
+			owner = { political_reform = low_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = low_health_care }
+				}
+			owner = { political_reform = acceptable_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = acceptable_health_care }
+				}
+			owner = { political_reform = good_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = good_health_care }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform		
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+		
+	option = {
+		name = "School Reforms"
+		random_owned = {
+			limit = {
+				owner = { school_reforms = no_schools }
+				}
+			owner = { political_reform = low_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = low_schools }
+				}
+			owner = { political_reform = acceptable_schools }
+			}		
+		random_owned = {
+			limit = {
+				owner = { school_reforms = acceptable_schools }
+				}
+			owner = { political_reform = good_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = good_schools }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}			
+		}	
+		clr_country_flag = socialist_reform		
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 1095 
+			}
+	}
+}
+
+
+country_event = {
+	id = 9404
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the socialist agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = socialist_demands_cooldown }
+		has_country_flag = socialist_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = socialist
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_socialist
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = socialist_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_socialist
+				duration = 90 
+				}
+			}
+		}
+	}
+	
+	
+country_event = {
+	id = 9504
+	title = "Giving into Demands"
+	desc = "After demands by socialist agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = socialist_reform_2
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Minimum Wage"
+		random_owned = {
+			limit = {
+				owner = { wage_reform = no_minimum_wage }
+				}
+			owner = { political_reform = trinket_wage }
+			}
+		random_owned = {
+			limit = {
+				owner = { wage_reform = trinket_wage }
+				}
+			owner = { political_reform = low_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = low_minimum_wage }
+				}
+			owner = { political_reform = acceptable_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = acceptable_minimum_wage }
+				}
+			owner = { political_reform = good_minimum_wage }
+			}			
+		random_owned = {
+			limit = {
+				owner = { wage_reform = good_minimum_wage }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}	
+		}			
+		clr_country_flag = socialist_reform_2
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}
+		}
+		
+	option = {
+		name = "Work Hours"
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			owner = { political_reform = fourteen_hours }
+			}
+		random_owned = {
+			limit = {
+				owner = { work_hours = fourteen_hours }
+				}
+			owner = { political_reform = twelve_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = twelve_hours }
+				}
+			owner = { political_reform = ten_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = ten_hours }
+				}
+			owner = { political_reform = eight_hours }
+			}			
+		random_owned = {
+			limit = {
+				owner = { work_hours = no_work_hour_limit }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}		
+		clr_country_flag = socialist_reform_2
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Safety Regulations" 
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = no_safety }
+				}
+			owner = { political_reform = trinket_safety }
+			}
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = trinket_safety }
+				}
+			owner = { political_reform = low_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = low_safety }
+				}
+			owner = { political_reform = acceptable_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = acceptable_safety }
+				}
+			owner = { political_reform = good_safety }
+			}			
+		random_owned = {
+			limit = {
+				owner = { safety_regulations = good_safety }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}	
+		clr_country_flag = socialist_reform_2
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}		
+	}			
+	
+	option = {
+		name = "Unemployment Subsidies"
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = no_subsidies }
+				}
+			owner = { political_reform = trinket_subsidies }
+			}		
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = trinket_subsidies }
+				}
+			owner = { political_reform = low_subsidies }
+			}
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = low_subsidies }
+				}
+			owner = { political_reform = acceptable_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = acceptable_subsidies }
+				}
+			owner = { political_reform = good_subsidies }
+			}			
+		random_owned = {
+			limit = {
+				owner = { unemployment_subsidies = good_subsidies }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform_2
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}
+	}
+	
+	option = {
+		name = "Pensions"
+		random_owned = {
+			limit = {
+				owner = { pensions = no_pensions }
+				}
+			owner = { political_reform = trinket_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = trinket_pensions }
+				}
+			owner = { political_reform = low_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = low_pensions }
+				}
+			owner = { political_reform = acceptable_pensions }
+			}
+		random_owned = {
+			limit = {
+				owner = { pensions = acceptable_pensions }
+				}
+			owner = { political_reform = good_pensions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { pensions = good_pensions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform_2
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}		
+	}
+	
+	option = {
+		name = "Health Care"
+		random_owned = {
+			limit = {
+				owner = { health_care = no_health_care }
+				}
+			owner = { political_reform = trinket_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = trinket_health_care }
+				}
+			owner = { political_reform = low_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = low_health_care }
+				}
+			owner = { political_reform = acceptable_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = acceptable_health_care }
+				}
+			owner = { political_reform = good_health_care }
+			}
+		random_owned = {
+			limit = {
+				owner = { health_care = good_health_care }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}
+		}
+		clr_country_flag = socialist_reform_2	
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}
+	}
+		
+	option = {
+		name = "School Reforms"
+		random_owned = {
+			limit = {
+				owner = { school_reforms = no_schools }
+				}
+			owner = { political_reform = low_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = low_schools }
+				}
+			owner = { political_reform = acceptable_schools }
+			}		
+		random_owned = {
+			limit = {
+				owner = { school_reforms = acceptable_schools }
+				}
+			owner = { political_reform = good_schools }
+			}
+		random_owned = {
+			limit = {
+				owner = { school_reforms = good_schools }
+				}
+			any_pop = {
+				scaled_militancy = {
+					ideology = socialist
+					factor = 8
+				}
+			}			
+		}	
+		clr_country_flag = socialist_reform_2		
+		add_country_modifer = {
+			name = socialist_demands_cooldown 
+			duration = 365
+			}
+	}
+}
+
+
+####Anarcho Liberal####
+country_event = {
+	id = 9105
+	title = "Revolutionary Demands"
+	desc = "As a revolutionary organization has spread through your land they now have numerable members and have sent a list of demands to your government asking for more liberal reforms. We could accept to appease them or we could refuse and risk outright revolution"
+	picture = "Celebration" 
+	
+	trigger = {
+		has_country_modifier = has_anarcho_liberal_center
+		any_owned_province = {
+			has_province_modifier = anarcho_liberal_revolutionaries_spread_2 
+			}
+		average_militancy = 5 
+		}
+	
+	mean_time_to_happen = {
+		months = 12 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+	
+	option = {
+		name = "We cannot risk a revolution. Give into their demands"
+		set_country_flag = liberal_reform
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}
+	}
+	
+	option = {
+		name = "We will not answer to revolutionaries"
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 8
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  anarcho_liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = anarcho_liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  anarcho_liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = anarcho_liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		random_province = {
+			limit = {
+				NOT = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_1
+					has_province_modifier = anarcho_liberal_revolutionaries_spread_2
+					}
+				}
+			add_province_modifier =  anarcho_liberal_revolutionaries_spread_2 
+			random_neighbor_province = {
+				add_province_modifier = {
+					name = anarcho_liberal_revolutionaries_spread_1
+					duration = -1 
+					}
+				}
+			}
+		set_country_flag = anarcho_liberal_demands_refused
+		}
+	}
+	
+province_event = {
+	id = 9205
+	title = "Revolutionaries"
+	desc = "After denying the demands of the revolutionaries a chapter of the organization spread to provinces across the nation and now they are pressing their influence on neighboring land"
+	
+	trigger = {
+		has_province_modifier = anarcho_liberal_revolutionaries_spread_2 
+		NOT = { has_province_modifier = anarcho_liberal_revolutionaries_spread_3 }
+		}
+	
+	mean_time_to_happen = {
+		months = 1 
+		}
+	
+	option = {
+		name = "Let them be"
+		add_province_modifier = {
+			name = anarcho_liberal_revolutionaries_spread_2
+			duration = -1
+			}
+		add_crime = anarcho_liberal_revolutionaries 
+		any_neighbor_province = {
+			add_province_modifier = {
+				name = anarcho_liberal_revolutionaries_spread_1 
+				duration = -1 
+				}
+			}
+		}
+	}
+	
+country_event = {
+	id = 9305
+	title = "Giving into Demands"
+	desc = "After demands by anarcho liberal agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = anarcho_liberal_reform 
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = universal_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = population_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}			
+		clr_country_flag = anarcho_liberal_reform
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = proportional_represenetation }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			owner = { political_reform = yes_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = free_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = anarcho_liberal 
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = all_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform		
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			owner = { political_reform = harassment }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = secret_ballots }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform	
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 1095 
+			}		
+		}
+	}
+	
+	
+country_event = {
+	id = 9405
+	title = "Revolution?"
+	desc = "Our intelligence is reporting that the anarcho liberal agitators have begun plans of revolution over the current government. We cannot be sure that this silly revolution will occur but if we appease them it is possible that they will stop these traitorous actions"
+	
+	trigger = {
+		NOT = { has_country_modifier = anarcho_liberal_demands_cooldown }
+		has_country_flag = anarcho_liberal_demands_refused 	
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "I will not appease traitors!"
+		any_pop = {
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 8 
+				}
+		}
+		random = {
+			chance = 75 
+			add_country_modifer = {
+				name = possible_revolution_anarcho_liberal
+				duration = 90 
+				}
+			}
+		}
+		
+	option = {
+		name = "We must do all we can to stop a revolution"
+		set_country_flag = anarcho_liberal_reform_2
+		random = {
+			chance = 25 
+			add_country_modifer = {
+				name = possible_revolution_anarcho_liberal
+				duration = 90 
+				}
+			}
+		}
+	}
+	
+
+country_event = {
+	id = 9505
+	title = "Giving into Demands"
+	desc = "After demands by anarcho liberal agitators you promised political reform. Now you must live up to it NOTE:If you have a reform maxed out do not choose that option as it will make your population more militant"
+
+	trigger = {
+		has_country_flag = anarcho_liberal_reform_2
+		}
+		
+	mean_time_to_happen = {
+		months = 1 
+	}
+	
+	option = {
+		name = "Voting Franchise"
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = none_voting }
+				}
+			owner = { political_reform = landed_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = landed_voting }
+				}
+			owner = { political_reform = wealth_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_weighted_voting }
+				}
+			owner = { political_reform = wealth_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = wealth_voting }
+				}
+			owner = { political_reform = universal_weighted_voting }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_weighted_voting }
+				}
+			owner = { political_reform = universal_voting  }
+			}
+		random_owned = {
+			limit = {
+				owner = { vote_franschise = universal_voting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform_2
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Upper House Composition"
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = party_appointed }
+				}
+			owner = { political_reform = appointed }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = appointed }
+				}
+			owner = { political_reform = state_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = state_equal_weight }
+				}
+			owner = { political_reform = population_equal_weight }
+			}
+		random_owned = {
+			limit = {
+				owner = { upper_house_composition = population_equal_weight }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}			
+		clr_country_flag = anarcho_liberal_reform_2
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365 
+			}
+		}
+		
+	option = {
+		name = "Voting System" 
+		random_owned = {
+			limit = {
+				owner = { voting_system = first_past_the_post }
+				}
+			owner = { political_reform = jefferson_method }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = jefferson_method }
+				}
+			owner = { political_reform = proportional_represenetation }
+			}
+		random_owned = {
+			limit = {
+				owner = { voting_system = proportional_represenetation }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform_2
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+	
+	option = {
+		name = "Public Meetings"
+		random_owned = {
+			limit = {
+				owner = { public_meetings = no_meeting }
+				}
+			owner = { political_reform = yes_meeting }
+			}		
+		random_owned = {
+			limit = {
+				owner = { public_meetings = yes_meeting }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform_2
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Press Rights"
+		random_owned = {
+			limit = {
+				owner = { press_rights = state_press }
+				}
+			owner = { political_reform = censored_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = censored_press }
+				}
+			owner = { political_reform = free_press }
+			}
+		random_owned = {
+			limit = {
+				owner = { press_rights = free_press }
+				}
+			}
+		any_pop = {
+			scaled_militancy = {
+				factor = 8 
+				ideology = anarcho_liberal 
+				}
+			}
+		clr_country_flag = anarcho_liberal_reform_2
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365
+			}
+		}
+	
+	option = {
+		name = "Trade Unions"
+		random_owned = {
+			limit = {
+				owner = { trade_unions = no_trade_unions }
+				}
+			owner = { political_reform = state_controlled }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = state_controlled }
+				}
+			owner = { political_reform = non_socialist }
+			}
+		random_owned = {
+			limit = {
+				owner = { trade_unions = non_socialist }
+				}
+			owner = { political_reform = all_trade_unions }
+			}			
+		random_owned = {
+			limit = {
+				owner = { trade_unions = all_trade_unions }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = anarcho_liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform_2		
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+		
+	option = {
+		name = "Political Parties"
+		random_owned = {
+			limit = {
+				owner = { political_parties = underground_parties }
+				}
+			owner = { political_reform = harassment }
+			}
+		random_owned = {
+			limit = {
+				owner = { political_parties = harassment }
+				}
+			owner = { political_reform = gerrymandering }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = gerrymandering }
+				}
+			owner = { political_reform = non_secret_ballots }
+			}		
+		random_owned = {
+			limit = {
+				owner = { political_parties = non_secret_ballots }
+				}
+			owner = { political_reform = secret_ballots }
+			}			
+		random_owned = {
+			limit = {
+				owner = { political_parties = secret_ballots }
+				}
+			any_pop = {
+				scaled_militancy = {
+					factor = 8 
+					ideology = liberal 
+					}
+				}
+			}	
+		clr_country_flag = anarcho_liberal_reform_2	
+		add_country_modifer = {
+			name = anarcho_liberal_demands_cooldown 
+			duration = 365
+			}		
+		}
+	}
