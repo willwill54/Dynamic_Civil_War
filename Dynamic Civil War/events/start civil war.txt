@@ -1,0 +1,2849 @@
+####Liberal####
+country_event = {
+	id = 9600 
+	title = "Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and Jacobin revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_liberal 
+		NOT = { exists = D54 }
+		NOT = {
+			OR = {
+				war_with = D54
+				war_with = D55 
+				war_with = D56
+				}
+			}
+		NOT = { has_country_flag = liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_2
+					}
+				}
+			secede_province = D54 
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_liberal				
+			}
+			defender_goal = {
+				casus_belli = civil_war_liberal 
+			}
+		}
+		set_country_flag = liberal_revolution_happening
+		remove_country_modifier = has_liberal_center
+		clr_country_flag = liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		remove_country_modifier = possible_revolution_liberal
+		prestige = -100 
+		ruling_party_ideology = liberal
+		government = democracy 
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = proportional_representation
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions 
+		political_reform = secret_ballots 
+		political_reform = no_slavery 
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+		}
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9601 
+	title = "Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and Jacobin revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_liberal 
+		NOT = { exists = D55 }
+		NOT = {
+			OR = {
+				war_with = D54
+				war_with = D55 
+				war_with = D56
+				}
+			}
+		NOT = { has_country_flag = liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_2
+					}
+				}
+			secede_province = D55
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_liberal				
+			}
+			defender_goal = {
+				casus_belli = civil_war_liberal 
+			}
+		}
+		set_country_flag = liberal_revolution_happening
+		remove_country_modifier = has_liberal_center
+		clr_country_flag = liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		remove_country_modifier = possible_revolution_liberal
+		prestige = -100 
+		ruling_party_ideology = liberal
+		government = democracy 
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = proportional_representation
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions 
+		political_reform = secret_ballots 
+		political_reform = no_slavery 
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+		}
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9602
+	title = "Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and Jacobin revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_liberal 
+		NOT = { exists = D56 }
+		NOT = {
+			OR = {
+				war_with = D54
+				war_with = D55 
+				war_with = D56
+				}
+			}
+		NOT = { has_country_flag = liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = liberal_revolutionaries_center
+					has_province_modifier = liberal_revolutionaries_2
+					}
+				}
+			secede_province = D56
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_liberal				
+			}
+			defender_goal = {
+				casus_belli = civil_war_liberal 
+			}
+		}
+		set_country_flag = liberal_revolution_happening
+		remove_country_modifier = has_liberal_center
+		clr_country_flag = liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		remove_country_modifier = possible_revolution_liberal
+		prestige = -100 
+		ruling_party_ideology = liberal
+		government = democracy 
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = proportional_representation
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions 
+		political_reform = secret_ballots 
+		political_reform = no_slavery 
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -2
+			}
+		}
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+####Communist####
+country_event = {
+	id = 9700 
+	title = "Communist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and communist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_communist
+		NOT = { exists = D51 }
+		NOT = {
+			OR = {
+				war_with = D51
+				war_with = D52
+				war_with = D53
+				}
+			}
+		NOT = { has_country_flag = communist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_2
+					}
+				}
+			secede_province = D51
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_communist			
+			}
+			defender_goal = {
+				casus_belli = civil_war_communist
+			}
+		}
+		set_country_flag = communist_revolution_happening
+		remove_country_modifier = has_communist_center
+		clr_country_flag = communist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		political_reform = no_slavery
+		social_reform = good_minimum_wage
+		social_reform = eight_hours
+		social_reform = good_subsidies
+		social_reform = good_pensions
+		social_reform = good_health_care
+		nationalize = yes
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -8
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9701
+	title = "Communist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and communist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_communist
+		NOT = { exists = D52 }
+		NOT = {
+			OR = {
+				war_with = D51
+				war_with = D52
+				war_with = D53
+				}
+			}
+		NOT = { has_country_flag = communist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_2
+					}
+				}
+			secede_province = D52
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_communist			
+			}
+			defender_goal = {
+				casus_belli = civil_war_communist
+			}
+		}
+		set_country_flag = communist_revolution_happening
+		remove_country_modifier = has_communist_center
+		clr_country_flag = communist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		political_reform = no_slavery
+		social_reform = good_minimum_wage
+		social_reform = eight_hours
+		social_reform = good_subsidies
+		social_reform = good_pensions
+		social_reform = good_health_care
+		nationalize = yes
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -8
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9702
+	title = "Communist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and communist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_communist
+		NOT = { exists = D53 }
+		NOT = {
+			OR = {
+				war_with = D51
+				war_with = D52
+				war_with = D53
+				}
+			}
+		NOT = { has_country_flag = communist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = communist_revolutionaries_center
+					has_province_modifier = communist_revolutionaries_2
+					}
+				}
+			secede_province = D53
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_communist			
+			}
+			defender_goal = {
+				casus_belli = civil_war_communist
+			}
+		}
+		set_country_flag = communist_revolution_happening
+		remove_country_modifier = has_communist_center
+		clr_country_flag = communist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		political_reform = no_slavery
+		social_reform = good_minimum_wage
+		social_reform = eight_hours
+		social_reform = good_subsidies
+		social_reform = good_pensions
+		social_reform = good_health_care
+		nationalize = yes
+		any_pop = {
+			scaled_militancy = {
+				ideology = fascist
+				factor = 6
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -8
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+####Fascist####
+country_event = {
+	id = 9800 
+	title = "Fascist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and fascist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_fascist
+		NOT = { exists = D57 }
+		NOT = {
+			OR = {
+				war_with = D57
+				war_with = D58
+				war_with = D59
+				}
+			}
+		NOT = { has_country_flag = fascist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_2
+					}
+				}
+			secede_province = D57
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_fascist	
+			}
+			defender_goal = {
+				casus_belli = civil_war_fascist
+			}
+		}
+		set_country_flag = fascist_revolution_happening
+		remove_country_modifier = has_fascist_center
+		clr_country_flag = fascist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = fascist_dictatorship
+		prestige = -100 
+		ruling_party_ideology = fascist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}	
+	
+country_event = {
+	id = 9801
+	title = "Fascist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and fascist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_fascist
+		NOT = { exists = D58 }
+		NOT = {
+			OR = {
+				war_with = D57
+				war_with = D58
+				war_with = D59
+				}
+			}
+		NOT = { has_country_flag = fascist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_2
+					}
+				}
+			secede_province = D58
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_fascist	
+			}
+			defender_goal = {
+				casus_belli = civil_war_fascist
+			}
+		}
+		set_country_flag = fascist_revolution_happening
+		remove_country_modifier = has_fascist_center
+		clr_country_flag = fascist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = fascist_dictatorship
+		prestige = -100 
+		ruling_party_ideology = fascist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9802 
+	title = "Fascist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and fascist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_fascist
+		NOT = { exists = D59 }
+		NOT = {
+			OR = {
+				war_with = D57
+				war_with = D58
+				war_with = D59
+				}
+			}
+		NOT = { has_country_flag = fascist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}		
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = fascist_revolutionaries_center
+					has_province_modifier = fascist_revolutionaries_2
+					}
+				}
+			secede_province = D59
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_fascist	
+			}
+			defender_goal = {
+				casus_belli = civil_war_fascist
+			}
+		}
+		set_country_flag = fascist_revolution_happening
+		remove_country_modifier = has_fascist_center
+		clr_country_flag = fascist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = fascist_dictatorship
+		prestige = -100 
+		ruling_party_ideology = fascist
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}		
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+####Reactionary####
+country_event = {
+	id = 9900
+	title = "Reactionary Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and reactionary revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_reactionary
+		NOT = { exists = D60 }
+		NOT = {
+			OR = {
+				war_with = D60
+				war_with = D61 
+				war_with = D62
+				}
+			}
+		NOT = { has_country_flag = reactionary_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_2
+					}
+				}
+			secede_province = D60
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_reactionary
+			}
+			defender_goal = {
+				casus_belli = civil_war_reactionary
+			}
+		}
+		set_country_flag = reactionary_revolution_happening
+		remove_country_modifier = has_reactionary_center
+		clr_country_flag = reactionary_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = absolute_monarchy
+		prestige = -100 
+		ruling_party_ideology = reactionary
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9901
+	title = "Reactionary Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and reactionary revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_reactionary
+		NOT = { exists = D61 }
+		NOT = {
+			OR = {
+				war_with = D60
+				war_with = D61 
+				war_with = D62
+				}
+			}
+		NOT = { has_country_flag = reactionary_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_2
+					}
+				}
+			secede_province = D61
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_reactionary
+			}
+			defender_goal = {
+				casus_belli = civil_war_reactionary
+			}
+		}
+		set_country_flag = reactionary_revolution_happening
+		remove_country_modifier = has_reactionary_center
+		clr_country_flag = reactionary_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = absolute_monarchy
+		prestige = -100 
+		ruling_party_ideology = reactionary
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 9902
+	title = "Reactionary Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and reactionary revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_reactionary
+		NOT = { exists = D62}
+		NOT = {
+			OR = {
+				war_with = D60
+				war_with = D61 
+				war_with = D62
+				}
+			}
+		NOT = { has_country_flag = reactionary_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = democracy
+			}
+		modifier = {
+			factor = 1.5 
+			trade_policy = free_trade
+			}
+		modifier = {
+			factor = 0.6
+			economic_policy = planned_economy
+			}
+		modifier = {
+			factor = 1.5 
+			citizenship_policy = residency
+			}
+		modifier = {
+			factor = 0.8
+			citizenship_policy = full_citizenship
+			}
+		modifier = {
+			factor = 0.7
+			war_policy = pacifism
+			}
+		modifier = {
+			factor = 0.9
+			war_policy = anti_military
+			}
+		modifier = {
+			factor = 1.2
+			war_policy = pro_military
+			}
+		modifier = {
+			factor = 1.5 
+			war_policy = jingoism
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = reactionary_revolutionaries_center
+					has_province_modifier = reactionary_revolutionaries_2
+					}
+				}
+			secede_province = D62
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_reactionary
+			}
+			defender_goal = {
+				casus_belli = civil_war_reactionary
+			}
+		}
+		set_country_flag = reactionary_revolution_happening
+		remove_country_modifier = has_reactionary_center
+		clr_country_flag = reactionary_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		government = absolute_monarchy
+		prestige = -100 
+		ruling_party_ideology = reactionary
+		political_reform = none_voting
+		political_reform = party_appointed
+		political_reform = no_meeting
+		political_reform = state_press
+		political_reform = state_controlled
+		political_reform = underground_parties
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+####Socialist####
+country_event = {
+	id = 8000
+	title = "Socialist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and socialist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D63}
+		NOT = {
+			OR = {
+				war_with = D63
+				war_with = D64 
+				war_with = D65
+				}
+			}
+		NOT = { has_country_flag = socialist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_2
+					}
+				}
+			secede_province = D63
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_socialist
+			}
+			defender_goal = {
+				casus_belli = civil_war_socialist
+			}
+		}
+		set_country_flag = socialist_revolution_happening
+		remove_country_modifier = has_socialist_center
+		clr_country_flag = socialist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = democracy
+		ruling_party_ideology = socialist
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = secret_ballots
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+
+country_event = {
+	id = 8001
+	title = "Socialist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and socialist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D64 }
+		NOT = {
+			OR = {
+				war_with = D63
+				war_with = D64 
+				war_with = D65
+				}
+			}
+		NOT = { has_country_flag = socialist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_2
+					}
+				}
+			secede_province = D64
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_socialist
+			}
+			defender_goal = {
+				casus_belli = civil_war_socialist
+			}
+		}
+		set_country_flag = socialist_revolution_happening
+		remove_country_modifier = has_socialist_center
+		clr_country_flag = socialist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = democracy
+		ruling_party_ideology = socialist
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = secret_ballots
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 8002
+	title = "Socialist Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and socialist revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D65 }
+		NOT = {
+			OR = {
+				war_with = D63
+				war_with = D64 
+				war_with = D65
+				}
+			}
+		NOT = { has_country_flag = socialist_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.7
+			government = bourgeois_dictatorship
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			wage_reform = good_minimum_wage
+			}
+		modifier = {
+			factor = 1.5 
+			work_hours = eight_hours
+			}
+		modifier = {
+			factor = 1.5 
+			safety_regulations = good_safety
+			}
+		modifier = {
+			factor = 1.5
+			unemployment_subsidies = good_subsidies 
+			}
+		modifier = {
+			factor = 1.5 
+			pensions = good_pensions
+			}
+		modifier = {
+			factor = 1.5 
+			health_care = good_health_care
+			}
+		modifier = {
+			factor = 1.5 
+			school_reforms = good_schools 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = socialist_revolutionaries_center
+					has_province_modifier = socialist_revolutionaries_2
+					}
+				}
+			secede_province = D65
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_socialist
+			}
+			defender_goal = {
+				casus_belli = civil_war_socialist
+			}
+		}
+		set_country_flag = socialist_revolution_happening
+		remove_country_modifier = has_socialist_center
+		clr_country_flag = socialist_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = democracy
+		ruling_party_ideology = socialist
+		political_reform = universal_voting
+		political_reform = population_equal_weight
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = secret_ballots
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = -4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+####AnarchoLiberal####
+country_event = {
+	id = 8000
+	title = "Anarcho-Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and anarcho liberal revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D66 }
+		NOT = {
+			OR = {
+				war_with = D66
+				war_with = D67
+				war_with = D68
+				}
+			}
+		NOT = { has_country_flag = anarcho_liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_2
+					}
+				}
+			secede_province = D66
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+			defender_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+		}
+		set_country_flag = anarcho_liberal_revolution_happening
+		remove_country_modifier = has_anarcho_liberal_center
+		clr_country_flag = anarcho_liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = bourgeois_dictatorship
+		ruling_party_ideology = anarcho_liberal
+		political_reform = universal_voting
+		political_reform = appointed
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = underground_parties
+		social_reform = no_minimum_wage
+		social_reform = no_work_hour_limit
+		social_reform = no_safety
+		social_reform = no_subsidies
+		social_reform = no_pensions
+		social_reform = no_health_care		
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 8001
+	title = "Anarcho-Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and anarcho liberal revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D67 }
+		NOT = {
+			OR = {
+				war_with = D66
+				war_with = D67
+				war_with = D68
+				}
+			}
+		NOT = { has_country_flag = anarcho_liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_2
+					}
+				}
+			secede_province = D67
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+			defender_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+		}
+		set_country_flag = anarcho_liberal_revolution_happening
+		remove_country_modifier = has_anarcho_liberal_center
+		clr_country_flag = anarcho_liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = bourgeois_dictatorship
+		ruling_party_ideology = anarcho_liberal
+		political_reform = universal_voting
+		political_reform = appointed
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = underground_parties
+		social_reform = no_minimum_wage
+		social_reform = no_work_hour_limit
+		social_reform = no_safety
+		social_reform = no_subsidies
+		social_reform = no_pensions
+		social_reform = no_health_care		
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
+	
+country_event = {
+	id = 8000
+	title = "Anarcho-Liberal Revolution?!"
+	desc = "Tensions have come to a boiling point in out nation and anarcho liberal revolutionaries have now come to the streets and are demanding your government resign and institute a liberal government. If we do not comply an attempted revolution will commence with part of our nation breaking off and a civil war beginning"
+	picture = "Revolution"
+	
+	trigger = {
+		has_country_modifier = possible_revolution_socialist
+		NOT = { exists = D68 }
+		NOT = {
+			OR = {
+				war_with = D66
+				war_with = D67
+				war_with = D68
+				}
+			}
+		NOT = { has_country_flag = anarcho_liberal_revolution_happening }
+		}
+		
+	mean_time_to_happen = {
+		months = 0.5 
+		modifier = {
+			factor = 0.9
+			average_militancy = 5
+			}
+		modifier = {
+			factor = 0.8 
+			average_militancy = 6 
+			}
+		modifier = {
+			factor = 0.7 
+			average_militancy = 7 
+			}
+		modifier = {
+			factor = 0.6 
+			average_militancy = 8 
+			}
+		modifier = {
+			factor = 0.5 
+			average_militancy = 9 
+			}
+		modifier = {
+			factor = 0.8 
+			controlled_by_rebels = yes 
+			}
+		modifier = {
+			factor = 0.7 
+			government = absolute_monarchy
+			}
+		modifier = {
+			factor = 0.7 
+			government = fascist_dictatorship 
+			}
+		modifier = {
+			factor = 0.8 
+			government = proletarian_dictatorship 
+			}
+		modifier = {
+			factor = 0.8
+			government = prussian_constitutionalism 
+			}
+		modifier = {
+			factor = 0.8 
+			government = presidential_dictatorship 
+			}
+		modifier = {
+			factor = 1.5 
+			press_rights = free_press 
+			}
+		modifier = {
+			factor = 1.5 
+			public_meetings = yes_meeting 
+			}
+		modifier = {
+			factor = 1.7 
+			vote_franschise = universal_weighted_voting 
+			}
+		}
+		
+	option = {
+		name = "We will teach this rebel scum"
+		any_owned_province = {
+			limit = {
+				OR = {
+					has_province_modifier = anarcho_liberal_revolutionaries_center
+					has_province_modifier = anarcho_liberal_revolutionaries_2
+					}
+				}
+			secede_province = D68
+			}
+		war = {
+			target = THIS 
+			attacker_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+			defender_goal = {
+				casus_belli = civil_war_anarcho_liberal
+			}
+		}
+		set_country_flag = anarcho_liberal_revolution_happening
+		remove_country_modifier = has_anarcho_liberal_center
+		clr_country_flag = anarcho_liberal_demands_refused
+		ai_chance = {
+			factor = 95 
+			}
+	}
+	
+	option = {
+		name = "Massive Reforms to stop this war!"
+		prestige = -100 
+		government = bourgeois_dictatorship
+		ruling_party_ideology = anarcho_liberal
+		political_reform = universal_voting
+		political_reform = appointed
+		political_reform = yes_meeting
+		political_reform = free_press
+		political_reform = all_trade_unions
+		political_reform = underground_parties
+		social_reform = no_minimum_wage
+		social_reform = no_work_hour_limit
+		social_reform = no_safety
+		social_reform = no_subsidies
+		social_reform = no_pensions
+		social_reform = no_health_care		
+		any_pop = {
+			scaled_militancy = {
+				ideology = reactionary
+				factor = 4
+			}
+			scaled_militancy = {
+				ideology = conservative
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = fascist
+				factor = -2
+			}
+			scaled_militancy = {
+				ideology = liberal
+				factor = -4
+			}
+			scaled_militancy = {
+				ideology = anarcho_liberal
+				factor = -8
+			}
+			scaled_militancy = {
+				ideology = socialist
+				factor = 2
+			}
+			scaled_militancy = {
+				ideology = communist
+				factor = 4
+			}
+		}	
+		ai_chance  = {
+			factor = 5 
+			}
+		}
+	}
